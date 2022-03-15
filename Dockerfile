@@ -2,9 +2,9 @@
 
 FROM python:3.8-slim-buster
 
-WORKDIR /casajupyter
+WORKDIR /build
 
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends sudo apt-utils && \
@@ -13,7 +13,9 @@ RUN apt-get update -y && \
     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     pip3 install -r requirements.txt
 
-COPY . .
+WORKDIR /casajupyter
+
+COPY tclean_mpi.ipynb .
 
 ENTRYPOINT ["jupyter", "lab"]
 
