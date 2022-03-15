@@ -2,9 +2,9 @@
 
 FROM python:3.8-slim-buster
 
-WORKDIR /casa_jupyter
+WORKDIR /build
 
-COPY requirements.txt requirements.txt
+COPY requirements.txt .
 
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends sudo apt-utils && \
@@ -13,7 +13,11 @@ RUN apt-get update -y && \
     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     pip3 install -r requirements.txt
 
-COPY . .
+WORKDIR /notebooks
 
-CMD [ "jupyter", "lab" , "--no-browser", "--ip 0.0.0.0"]
+COPY example* .
+
+RUN chmod -R 777 /notebooks
+
+ENTRYPOINT ["jupyter", "lab"]
 
