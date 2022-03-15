@@ -15,5 +15,5 @@ RUN apt-get update -y && \
 
 COPY . .
 
-ENTRYPOINT ["jupyter lab"]
+ENTRYPOINT ["jupyter", "lab"]
 
