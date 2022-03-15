@@ -17,5 +17,7 @@ WORKDIR /notebooks
 
 COPY example* .
 
+RUN chmod -R 777 /notebooks
+
 ENTRYPOINT ["jupyter", "lab"]
 
