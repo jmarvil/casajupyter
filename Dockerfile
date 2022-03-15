@@ -20,7 +20,8 @@ WORKDIR /notebooks
 COPY example* .
 
 RUN mkdir -p /scratch /tmp/overlay
-RUN mount -t overlay overlay -o index=off,workdir=/tmp/overlay,upperdir=/scratch,lowerdir=/notebooks /notebooks
+#RUN mount -t overlay overlay -o index=off,workdir=/tmp/overlay,upperdir=/scratch,lowerdir=/notebooks /notebooks
+RUN mount -t overlay overlay -o lowerdir=/scratch:/notebooks /merged
 
 ENTRYPOINT ["jupyter", "lab"]
 
