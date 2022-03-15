@@ -18,5 +18,7 @@ RUN mkdir /notebooks && chmod 777 /notebooks
 
 COPY *ipynb /notebooks
 
+COPY example* /notebooks
+
 ENTRYPOINT ["jupyter", "lab"]
 
