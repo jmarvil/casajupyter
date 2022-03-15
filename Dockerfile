@@ -20,7 +20,7 @@ RUN mkdir -p /scratch /tmp/overlay /merged /notebooks && chmod 700 /scratch && c
 COPY example* /notebooks
 
 #RUN mount -t overlay overlay -o index=off,workdir=/tmp/overlay,upperdir=/scratch,lowerdir=/notebooks /notebooks
-RUN mount -t overlay overlay -o lowerdir=/scratch:/notebooks /merged
+RUN sudo mount -t overlay overlay -o lowerdir=/scratch:/notebooks /merged
 
 ENTRYPOINT ["jupyter", "lab"]
 
