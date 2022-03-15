@@ -6,18 +6,20 @@ WORKDIR /build
 
 COPY requirements.txt .
 
-RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends sudo apt-utils && \
-    apt-get install -y --no-install-recommends openssh-server \
-        gcc gfortran libopenmpi-dev openmpi-bin openmpi-common openmpi-doc binutils && \
-    apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    pip3 install -r requirements.txt
+# RUN apt-get update -y && \
+#     apt-get install -y --no-install-recommends sudo apt-utils && \
+#     apt-get install -y --no-install-recommends openssh-server \
+#         gcc gfortran libopenmpi-dev openmpi-bin openmpi-common openmpi-doc binutils && \
+#     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+#     pip3 install -r requirements.txt
+
+RUN pip3 install -r requirements.txt
 
 WORKDIR /notebooks
 
 COPY example* .
 
-RUN chmod -R 777 /notebooks
+RUN mkdir /scratch && chmod -R 777 /scratch && mount --bind /scratch /notebooks
 
 ENTRYPOINT ["jupyter", "lab"]
 
