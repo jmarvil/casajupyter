@@ -19,9 +19,8 @@ WORKDIR /notebooks
 
 COPY example* .
 
-RUN mkdir /scratch
-RUN chmod -R 777 /scratch 
-RUN mount -t overlay overlay /notebooks -o index=off,workdir=/tmp,upperdir=/scratch,lowerdir=/notebooks
+RUN mkdir -p /scratch /tmp/overlay
+RUN mount -t overlay overlay -o index=off,workdir=/tmp/overlay,upperdir=/scratch,lowerdir=/notebooks /notebooks
 
 ENTRYPOINT ["jupyter", "lab"]
 
