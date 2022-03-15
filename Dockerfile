@@ -15,7 +15,7 @@ COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-WORKDIR /notebooks
+RUN mkdir /notebooks && chmod 777 /notebooks
 
 COPY *ipynb /notebooks
 
