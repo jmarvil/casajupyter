@@ -2,7 +2,7 @@
 
 FROM python:3.8-slim-buster
 
-WORKDIR /casa_jupyter
+WORKDIR /casajupyter
 
 COPY requirements.txt requirements.txt
 
@@ -15,5 +15,5 @@ RUN apt-get update -y && \
 
 COPY . .
 
-CMD [ "jupyter", "lab" , "--no-browser", "--ip 0.0.0.0"]
+ENTRYPOINT ["jupyter lab"]
 
