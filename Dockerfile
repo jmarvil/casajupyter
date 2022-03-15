@@ -13,9 +13,9 @@ RUN apt-get update -y && \
     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     pip3 install -r requirements.txt
 
-WORKDIR /casajupyter
+WORKDIR /notebooks
 
-COPY tclean_mpi.ipynb .
+COPY example* .
 
 ENTRYPOINT ["jupyter", "lab"]
 
