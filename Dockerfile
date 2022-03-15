@@ -15,7 +15,7 @@ COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-RUN mkdir -p /scratch /tmp/overlay /merged /notebooks
+RUN mkdir -p /scratch /tmp/overlay /merged /notebooks && chmod 700 /scratch && chmod 700 /notebooks && chmod 700 /merged
 
 COPY example* /notebooks
 
