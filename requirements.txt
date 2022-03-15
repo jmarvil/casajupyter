@@ -1,6 +1,6 @@
-#casatools
-#casadata
-#casatasks
-#casampi
+casatools
+casadata
+casatasks
+casampi
 jupyterlab
-#ipyparallel
+ipyparallel
