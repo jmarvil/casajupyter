@@ -15,12 +15,9 @@ COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-RUN mkdir -p /scratch /tmp/overlay /merged /notebooks && chmod 700 /scratch && chmod 700 /notebooks && chmod 700 /merged
+WORKDIR /notebooks
 
-COPY example* /notebooks
-
-#RUN mount -t overlay overlay -o index=off,workdir=/tmp/overlay,upperdir=/scratch,lowerdir=/notebooks /notebooks
-RUN sudo mount -t overlay overlay -o lowerdir=/scratch:/notebooks /merged
+COPY *ipynb /notebooks
 
 ENTRYPOINT ["jupyter", "lab"]
 
