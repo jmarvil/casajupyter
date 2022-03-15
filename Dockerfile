@@ -15,11 +15,10 @@ COPY requirements.txt .
 
 RUN pip3 install -r requirements.txt
 
-WORKDIR /notebooks
+RUN mkdir -p /scratch /tmp/overlay /merged /notebooks
 
-COPY example* .
+COPY example* /notebooks
 
-RUN mkdir -p /scratch /tmp/overlay /merged
 #RUN mount -t overlay overlay -o index=off,workdir=/tmp/overlay,upperdir=/scratch,lowerdir=/notebooks /notebooks
 RUN mount -t overlay overlay -o lowerdir=/scratch:/notebooks /merged
 
