@@ -20,5 +20,12 @@ COPY *ipynb /notebooks
 
 COPY example* /notebooks
 
+RUN mkdir -p /tmp/overlay && \
+    mount -t tmpfs tmpfs /tmp/overlay && \
+    mkdir -p /tmp/overlay/{upper,work} && \
+    mkdir -p /root/folder && \
+    mount -t overlay overlay -o lowerdir=/root/folder-ro,upperdir=/tmp/overlay/upper,workdir=/tmp/overlay/work /root/folder
+
+
 ENTRYPOINT ["jupyter", "lab"]
 
