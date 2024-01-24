@@ -1,6 +1,7 @@
 casatools
 casadata
 casatasks
+casashell
 casampi
 jupyterlab
 ipyparallel
