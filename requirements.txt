@@ -2,6 +2,12 @@ casatools
 casadata
 casatasks
 casashell
+casafeather
+casagui
+casalogger
+casaplotserver
+casaplotms
+casaviewer
 casampi
 jupyterlab
 ipyparallel
