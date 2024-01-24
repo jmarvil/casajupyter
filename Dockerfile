@@ -6,7 +6,7 @@ COPY requirements.txt .
 
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends sudo apt-utils && \
-    apt-get install -y --no-install-recommends openssh-server \
+    apt-get install -y --no-install-recommends openssh-server libfuse2 \
         gcc gfortran libopenmpi-dev openmpi-bin openmpi-common openmpi-doc binutils && \
     apt-get clean && apt-get purge && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* 
     
